@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to search fruit.</p>
+<input type="text" name="search" id="a"  placeholder="Search..">
+<button onclick="action()">search</button>
+<input type="button" id="b"  value="add new fruit" onClick="add()">
+<p id="demo"></p>
+<script>
+var fruit = ["orange", "apple", "banana" , "grape", "apples"];
+var i;
+var text = "";
+var fail = "not found";
+function action(){
+document.getElementById('b').style.visibility ='hidden';
+	text = "";
+	var b = document.getElementById("a").value
+	for(i = 0; i<fruit.length; i++){
+    	if(fruit[i].indexOf(b)>-1){  
+        text += fruit[i] + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+	}
+    if(text ==""){
+    document.getElementById("demo").innerHTML = fail;
+    document.getElementById('b').style.visibility ='visible';
+    } 
+}
+function add(){
+var b = document.getElementById("a").value
+fruit.push(b);
+document.getElementById("a").value = "";
+action();
+}
+action();
+</script>
+</body>
+</html>
+
